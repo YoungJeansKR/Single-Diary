@@ -1,4 +1,4 @@
-package org.techtown.sampledialog;
+package org.techtown.sampletask;
 
 import org.junit.Test;
 
