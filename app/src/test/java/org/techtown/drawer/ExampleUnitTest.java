@@ -1,4 +1,4 @@
-package org.techtown.sampletask;
+package org.techtown.drawer;
 
 import org.junit.Test;
 
