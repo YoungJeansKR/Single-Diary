@@ -1,4 +1,4 @@
-package org.techtown.drawer;
+package org.techtown.service;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("org.techtown.drawer", appContext.getPackageName());
+        assertEquals("org.techtown.service", appContext.getPackageName());
     }
 }

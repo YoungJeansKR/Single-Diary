@@ -1,2 +1,2 @@
-rootProject.name = "SampleDrawer"
+rootProject.name = "SampleService"
 include ':app'
