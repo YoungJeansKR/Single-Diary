@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "org.techtown.view"
+        applicationId "org.techtown.web"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
