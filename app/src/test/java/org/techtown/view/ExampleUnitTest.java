@@ -1,4 +1,4 @@
-package org.techtown.service;
+package org.techtown.view;
 
 import org.junit.Test;
 
