@@ -1,2 +1,2 @@
-rootProject.name = "SampleThreadAnimatioin"
+rootProject.name = "SingleDiary"
 include ':app'

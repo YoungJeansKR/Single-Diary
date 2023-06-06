@@ -1,4 +1,4 @@
-package org.techtown.threadanim;
+package org.techtown.diary;
 
 import org.junit.Test;
 
