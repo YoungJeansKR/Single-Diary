@@ -1,4 +1,4 @@
-package org.techtown.delayed;
+package org.techtown.threadanim;
 
 import org.junit.Test;
 
