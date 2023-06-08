@@ -1,7 +1,6 @@
 package org.techtown.diary;
 
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -131,15 +130,11 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>
         }
 
         public void setItem(Note item) {
-            // set mood
             String mood = item.getMood();
             int moodIndex = Integer.parseInt(mood);
             setMoodImage(moodIndex);
 
-            // set picture exists
             String picturePath = item.getPicture();
-            Log.d("NoteAdapter", "picturePath -> " + picturePath);
-
             if (picturePath != null && !picturePath.equals("")) {
                 pictureExistsImageView.setVisibility(View.VISIBLE);
                 pictureImageView.setVisibility(View.VISIBLE);
@@ -147,6 +142,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>
 
             } else {
                 pictureExistsImageView.setVisibility(View.GONE);
+                pictureImageView.setVisibility(View.GONE);
                 pictureImageView.setImageResource(R.drawable.noimagefound);
 
             }

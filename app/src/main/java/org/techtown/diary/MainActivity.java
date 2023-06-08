@@ -6,7 +6,6 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Environment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -54,6 +53,11 @@ public class MainActivity extends AppCompatActivity implements OnTabItemSelected
     String currentDateString;
     Date currentDate;
 
+    /**
+     * 데이터베이스 인스턴스
+     */
+    public static NoteDatabase mDatabase = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,7 +104,8 @@ public class MainActivity extends AppCompatActivity implements OnTabItemSelected
                 .runtime()
                 .permission(
                         Permission.ACCESS_FINE_LOCATION,
-                        Permission.READ_EXTERNAL_STORAGE)
+                        Permission.READ_EXTERNAL_STORAGE,
+                        Permission.WRITE_EXTERNAL_STORAGE)
                 .onGranted(new Action<List<String>>() {
                     @Override
                     public void onAction(List<String> permissions) {
@@ -115,21 +120,71 @@ public class MainActivity extends AppCompatActivity implements OnTabItemSelected
                 })
                 .start();
 
+        // 데이터베이스 열기
+        openDatabase();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (mDatabase != null) {
+            mDatabase.close();
+            mDatabase = null;
+        }
+    }
+
+    /**
+     * 데이터베이스 열기 (데이터베이스가 없을 때는 만들기)
+     */
+    public void openDatabase() {
+        // open database
+        if (mDatabase != null) {
+            mDatabase.close();
+            mDatabase = null;
+        }
+
+        mDatabase = NoteDatabase.getInstance(this);
+        boolean isOpen = mDatabase.open();
+        if (isOpen) {
+            Log.d(TAG, "Note database is open.");
+        } else {
+            Log.d(TAG, "Note database is not open.");
+        }
     }
 
     public void setPicturePath() {
-        String sdcardPath = Environment.getExternalStorageDirectory().getAbsolutePath();
-        AppConstants.FOLDER_PHOTO = sdcardPath + File.separator + "photo";
+        String folderPath = getFilesDir().getAbsolutePath();
+        AppConstants.FOLDER_PHOTO = folderPath + File.separator + "photo";
+
+        File photoFolder = new File(AppConstants.FOLDER_PHOTO);
+        if (!photoFolder.exists()) {
+            photoFolder.mkdirs();
+        }
     }
 
     public void onTabSelected(int position) {
         if (position == 0) {
             bottomNavigation.setSelectedItemId(R.id.tab1);
         } else if (position == 1) {
-            bottomNavigation.setSelectedItemId(R.id.tab2);
+            fragment2 = new Fragment2();
+
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container, fragment2).commit();
         } else if (position == 2) {
             bottomNavigation.setSelectedItemId(R.id.tab3);
         }
+    }
+
+    public void showFragment2(Note item) {
+
+        fragment2 = new Fragment2();
+        fragment2.setItem(item);
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment2).commit();
+
     }
 
     public void showToast(String message) {
