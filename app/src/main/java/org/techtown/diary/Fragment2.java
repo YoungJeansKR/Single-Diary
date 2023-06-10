@@ -28,6 +28,7 @@ import com.github.channguyen.rsv.RangeSliderView;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Fragment2 extends Fragment {
@@ -62,6 +63,9 @@ public class Fragment2 extends Fragment {
     Uri uri;
     File file;
     Bitmap resultPhotoBitmap;
+
+    SimpleDateFormat todayDateFormat;
+    String currentDateString;
 
     @Override
     public void onAttach(Context context) {
@@ -237,7 +241,11 @@ public class Fragment2 extends Fragment {
             setAddress("");
 
             Date currentDate = new Date();
-            String currentDateString = AppConstants.dateFormat3.format(currentDate);
+            if (todayDateFormat == null) {
+                todayDateFormat = new SimpleDateFormat(getResources().getString(R.string.today_date_format));
+            }
+            currentDateString = todayDateFormat.format(currentDate);
+            AppConstants.println("currentDateString : " + currentDateString);
             setDateString(currentDateString);
 
             contentsInput.setText("");

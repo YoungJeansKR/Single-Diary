@@ -29,6 +29,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements OnTabItemSelected
     String currentAddress;
     String currentDateString;
     Date currentDate;
+    SimpleDateFormat todayDateFormat;
 
     /**
      * 데이터베이스 인스턴스
@@ -203,7 +205,14 @@ public class MainActivity extends AppCompatActivity implements OnTabItemSelected
     public void getCurrentLocation() {
         // set current time
         currentDate = new Date();
-        currentDateString = AppConstants.dateFormat3.format(currentDate);
+
+        //currentDateString = AppConstants.dateFormat3.format(currentDate);
+        if (todayDateFormat == null) {
+            todayDateFormat = new SimpleDateFormat(getResources().getString(R.string.today_date_format));
+        }
+        currentDateString = todayDateFormat.format(currentDate);
+        AppConstants.println("currentDateString : " + currentDateString);
+
         if (fragment2 != null) {
             fragment2.setDateString(currentDateString);
         }

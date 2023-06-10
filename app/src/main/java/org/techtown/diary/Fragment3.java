@@ -80,7 +80,7 @@ public class Fragment3 extends Fragment {
         chart.setUsePercentValues(true);
         chart.getDescription().setEnabled(false);
 
-        chart.setCenterText("기분별 비율");
+        chart.setCenterText(getResources().getString(R.string.graph1_title));
         chart.setTransparentCircleColor(Color.WHITE);
         chart.setTransparentCircleAlpha(110);
         chart.setHoleRadius(58f);
@@ -185,7 +185,7 @@ public class Fragment3 extends Fragment {
             }
         }
 
-        PieDataSet dataSet = new PieDataSet(entries, "기분별 비율");
+        PieDataSet dataSet = new PieDataSet(entries, getResources().getString(R.string.graph1_title));
 
         dataSet.setDrawIcons(true);
 
@@ -239,7 +239,7 @@ public class Fragment3 extends Fragment {
             entries.add(new BarEntry(Float.valueOf(String.valueOf(i+1)), value, drawable));
         }
 
-        BarDataSet dataSet2 = new BarDataSet(entries, "요일별 기분");
+        BarDataSet dataSet2 = new BarDataSet(entries, getResources().getString(R.string.graph2_title));
         dataSet2.setColor(Color.rgb(240, 120, 124));
 
         ArrayList<Integer> colors = new ArrayList<>();

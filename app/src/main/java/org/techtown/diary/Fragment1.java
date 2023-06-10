@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -39,6 +40,8 @@ public class Fragment1 extends Fragment {
 
     Context context;
     OnTabItemSelectedListener listener;
+
+    SimpleDateFormat todayDateFormat;
 
     @Override
     public void onAttach(Context context) {
@@ -160,7 +163,13 @@ public class Fragment1 extends Fragment {
                 if (dateStr != null && dateStr.length() > 10) {
                     try {
                         Date inDate = AppConstants.dateFormat4.parse(dateStr);
-                        createDateStr = AppConstants.dateFormat3.format(inDate);
+
+                        if (todayDateFormat == null) {
+                            todayDateFormat = new SimpleDateFormat(getResources().getString(R.string.today_date_format));
+                        }
+                        createDateStr = todayDateFormat.format(inDate);
+                        AppConstants.println("currentDateString : " + createDateStr);
+                        //createDateStr = AppConstants.dateFormat3.format(inDate);
                     } catch(Exception e) {
                         e.printStackTrace();
                     }
