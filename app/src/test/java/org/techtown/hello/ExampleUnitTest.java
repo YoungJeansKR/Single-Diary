@@ -1,4 +1,4 @@
-package org.techtown.diary;
+package org.techtown.hello;
 
 import org.junit.Test;
 
