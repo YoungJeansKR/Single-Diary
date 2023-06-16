@@ -1,2 +1,2 @@
+rootProject.name = "SampleConstraintLayout"
 include ':app'
-rootProject.name = "Hello"

@@ -1,4 +1,4 @@
-package org.techtown.hello;
+package org.techtown.sampleconstraintlayout;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("org.techtown.hello", appContext.getPackageName());
+        assertEquals("org.techtown.sampleconstraintlayout", appContext.getPackageName());
     }
 }
