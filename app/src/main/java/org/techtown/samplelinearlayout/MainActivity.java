@@ -1,4 +1,4 @@
-package org.techtown.sampleconstraintlayout;
+package org.techtown.samplelinearlayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
