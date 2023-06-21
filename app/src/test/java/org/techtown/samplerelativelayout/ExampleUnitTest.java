@@ -1,4 +1,4 @@
-package org.techtown.samplelinearlayout;
+package org.techtown.samplerelativelayout;
 
 import org.junit.Test;
 
