@@ -1,4 +1,4 @@
-package org.techtown.samplerelativelayout;
+package org.techtown.samplescrollview;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package org.techtown.samplerelativelayout;
+package org.techtown.samplescrollview;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("org.techtown.samplerelativelayout", appContext.getPackageName());
+        assertEquals("org.techtown.samplescrollview", appContext.getPackageName());
     }
 }
