@@ -1,4 +1,4 @@
-package org.techtown.samplescrollview;
+package org.techtown.diary;
 
 import org.junit.Test;
 
